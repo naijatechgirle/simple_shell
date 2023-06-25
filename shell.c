@@ -31,7 +31,7 @@ void my_EOF(int len, char *buff)
 	}
 }
 /**
-  * my_isatty - verif if terminal
+  * my_isatty - check if terminal
   */
 
 void my_isatty(void)
@@ -58,32 +58,32 @@ int main(void)
 		my_isatty();
 		len = getline(&buff, &size, stdin);
 		my_EOF(len, buff);
-		arv = splitstring(buff, " \n");
+		arv = my_splitstring(buff, " \n");
 		if (!arv || !arv[0])
-			execute(arv);
+			my_execute(arv);
 		else
 		{
-			value = _getenv("PATH");
+			value = my_getenv("PATH");
 			head = linkpath(value);
-			pathname = _which(arv[0], head);
-			f = checkbuild(arv);
+			pathname = my_which(arv[0], head);
+			f = my_checkbuild(arv);
 			if (f)
 			{
 				free(buff);
 				f(arv);
 			}
 			else if (!pathname)
-				execute(arv);
+				my_execute(arv);
 			else if (pathname)
 			{
 				free(arv[0]);
 				arv[0] = pathname;
-				execute(arv);
+				my_execute(arv);
 			}
 		}
 	}
-	free_list(head);
-	freearv(arv);
+	my_free_list(head);
+	my_freearv(arv);
 	free(buff);
 	return (0);
 }
