@@ -16,6 +16,7 @@ void my_exitt(char **arv)
 		my_freearv(arv);
 		exit(n);
 	}
+
 	for (i = 0; arv[i]; i++)
 		free(arv[i]);
 	free(arv);

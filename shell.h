@@ -19,7 +19,7 @@ char *my_strdup(char *str);
 char *my_concat_all(char *name, char *sep, char *value);
 
 char **my_splitstring(char *str, const char *delim);
-void my_execute(char **argv);
+void execute(char **argv);
 void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 

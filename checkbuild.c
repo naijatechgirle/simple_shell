@@ -1,34 +1,35 @@
 #include "shell.h"
 
 /**
-* my_checkbuild - checks if the command is a buildin
-* @arv: array of arguments
-* Return: pointer to function that takes arv and returns void
-*/
-void(my_*checkbuild(char **arv))(char **arv)
+ * my_checkbuild - checks if the command is a built-in
+ * @arv: array of arguments
+ * Return: pointer to function that takes arv and returns void
+ */
+void (*my_checkbuild(char **arv))(char **arv)
 {
-	int i, j;
-	mybuild T[] = {
-		{"exit", exitt},
-		{"env", env},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
+	mybuild builtins[] = {
+		{"exit", my_exitt},
+		{"env", my_env},
+		{"setenv", my_setenv},
+		{"unsetenv", my_unsetenv},
 		{NULL, NULL}
 	};
+	
+	int i;
 
-	for (i = 0; T[i].name; i++)
+	for (i = 0; builtins[i].name != NULL; i++)
 	{
-		j = 0;
-		if (T[i].name[j] == arv[0][j])
+		int j = 0;
+		char *builtin_name = builtins[i].name;
+		char *command_name = arv[0];
+
+		while (builtin_name[j] == command_name[j])
 		{
-			for (j = 0; arv[0][j]; j++)
-			{
-				if (T[i].name[j] != arv[0][j])
-					break;
-			}
-			if (!arv[0][j])
-				return (T[i].func);
+			if (builtin_name[j] == '\0')
+				return (builtins[i].func);
+			j++;
 		}
 	}
-	return (0);
+
+	return (NULL);
 }
