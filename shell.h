@@ -187,13 +187,13 @@ char *convert_number(long int, int, int);
 void remove_comments(char *);
 
 /* toem_builtin.c */
-int myexit(info_t *);
-int my_mycd(info_t *);
+int my_exit(info_t *);
+int my_cd(info_t *);
 int my_help(info_t *);
 
 /* toem_builtin1.c */
-int my_myhistory(info_t *);
-int my_myalias(info_t *);
+int my_history(info_t *);
+int my_alias(info_t *);
 
 /*toem_getline.c */
 ssize_t get_input(info_t *);
