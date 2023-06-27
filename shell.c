@@ -33,7 +33,6 @@ void my_EOF(int len, char *buff)
 /**
   * my_isatty - check if terminal
   */
-
 void my_isatty(void)
 {
 	if (isatty(STDIN_FILENO))
@@ -43,7 +42,6 @@ void my_isatty(void)
  * main - Shell
  * Return: on success 0
  */
-
 int main(void)
 {
 	ssize_t len = 0;
@@ -51,7 +49,7 @@ int main(void)
 	size_t size = 0;
 	list_path *head = '\0';
 	void (*f)(char **);
-
+	
 	signal(SIGINT, sig_handler);
 	while (len != EOF)
 	{
@@ -63,11 +61,8 @@ int main(void)
 			my_execute(arv);
 		else
 		{
-<<<<<<< HEAD
 			value = getenv("PATH");
-=======
 			value = my_getenv("PATH");
->>>>>>> deb06b8e1383ff4357d4fa9ddc0e892b3f53b7a1
 			head = linkpath(value);
 			pathname = my_which(arv[0], head);
 			f = my_checkbuild(arv);
