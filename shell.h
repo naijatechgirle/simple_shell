@@ -5,17 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stddef.h>
-#ifndef _SHELL_H_
-#define _SHELL_H_
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -208,13 +197,13 @@ void free_info(info_t *, int);
 /* toem_environ.c */
 char *my_getenv(info_t *, const char *);
 int my_env(info_t *);
-int my_setenv(info_t *);
+int _setenv(info_t *);
 int my_unsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* toem_getenv.c */
 char **get_environ(info_t *);
-int my_unsetenv(info_t *, char *);
+int _unsetenv(info_t *, char *);
 int my_setenv(info_t *, char *, char *);
 
 /* toem_history.c */
@@ -244,3 +233,5 @@ void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
+
+#endif

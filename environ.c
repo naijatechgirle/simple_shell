@@ -48,7 +48,7 @@ int my_setenv(info_t *info)
 		my_puts("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (my_setenv(info, info->argv[1], info->argv[2]))
+	if (_setenv(info, info->argv[1], info->argv[2]))
 		return (0);
 	return (1);
 }

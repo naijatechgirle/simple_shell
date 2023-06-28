@@ -1,4 +1,4 @@
-#include"shell.h"
+#iinclude"shell.h"
 
 /**
 * my_exit - exits the shell
@@ -7,7 +7,7 @@
 * Return: exits with a given exit status
 *         (0) if info.argv[0] != "exit"
 */
-intmy_exit(info_t *info)
+int my_exit(info_t *info)
 {
 	int checkExit;
 
@@ -35,7 +35,7 @@ intmy_exit(info_t *info)
 *         constant function prototype.
 * Return: Always 0
 */
-intmy_cd(info_t *info)
+int my_cd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -76,13 +76,12 @@ intmy_cd(info_t *info)
 	if (chdir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
-		my_puts(info->argv[1]);
-		my_putchar('\n');
+		my_puts(info->argv[1]), my_putchar('\n');
 	}
 	else
 	{
-		my_setenv(info, "OLDPWD", my_getenv(info, "PWD="));
-		my_setenv(info, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", my_getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
