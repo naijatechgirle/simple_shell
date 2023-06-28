@@ -49,7 +49,7 @@ int main(void)
 	size_t size = 0;
 	list_path *head = '\0';
 	void (*f)(char **);
-	
+
 	signal(SIGINT, sig_handler);
 	while (len != EOF)
 	{
@@ -67,18 +67,14 @@ int main(void)
 			pathname = my_which(arv[0], head);
 			f = my_checkbuild(arv);
 			if (f)
-			{
 				free(buff);
 				f(arv);
-			}
 			else if (!pathname)
 				my_execute(arv);
 			else if (pathname)
-			{
 				free(arv[0]);
 				arv[0] = pathname;
 				my_execute(arv);
-			}
 		}
 	}
 	my_free_list(head);

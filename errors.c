@@ -14,19 +14,19 @@ void my_puts(char *str)
 		return;
 	while (str[i] != '\0')
 	{
-		_eputchar(str[i]);
+		my_putchar(str[i]);
 		i++;
 	}
 }
 
 /**
- * _eputchar - writes the character c to stderr
+ * my_putchar - writes the character c to stderr
  * @c: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _eputchar(char c)
+int my_putchar(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
