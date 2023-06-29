@@ -29,7 +29,7 @@ void set_info(info_t *info, char **av)
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
-				info->argv[0] = _strdup(info->arg);
+				info->argv[0] = my_strdup(info->arg);
 				info->argv[1] = NULL;
 			}
 		}

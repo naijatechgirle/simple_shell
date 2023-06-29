@@ -1,4 +1,4 @@
-#iinclude"shell.h"
+#include "shell.h"
 
 /**
 * my_exit - exits the shell
@@ -18,8 +18,8 @@ int my_exit(info_t *info)
 			{
 				info->status = 2;
 				print_error(info, "Illegal number: ");
-				my_puts(info->argv[1]);
-				my_putchar('\n');
+				my_eputs(info->argv[1]);
+				my_eputchar('\n');
 				return (1);
 			}
 			info->err_num = my_erratoi(info->argv[1]);
@@ -31,8 +31,7 @@ int my_exit(info_t *info)
 
 /**
 * my_cd - changes the current directory of the process
-* @info: Structure containing potential arguments. Used to maintain
-*         constant function prototype.
+* @info: Structure containing potential arguments.
 * Return: Always 0
 */
 int my_cd(info_t *info)
@@ -42,15 +41,12 @@ int my_cd(info_t *info)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		my_puts("TODO: >>getcwd failure emsg here<<\n");
-
+		my_eputs("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
 		dir = my_getenv(info, "HOME=");
 		if (!dir)
-		{
 			chdir_ret = chdir((dir = my_getenv(info, "PWD=")) ? dir : "/");
-		}
 		else
 		{
 			chdir_ret = chdir(dir);
@@ -60,23 +56,21 @@ int my_cd(info_t *info)
 	{
 		if (!my_getenv(info, "OLDPWD="))
 		{
-			my_puts(s);
-			my_putchar('\n');
+			my_eputs(s);
+			my_eputchar('\n');
 			return (1);
 		}
-		my_puts(my_getenv(info, "OLDPWD="));
-		my_putchar('\n');
+		my_eputs(my_getenv(info, "OLDPWD=")), my_eputchar('\n');
 		chdir_ret = chdir((dir = my_getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 	{
 		chdir_ret = chdir(info->argv[1]);
 	}
-
 	if (chdir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
-		my_puts(info->argv[1]), my_putchar('\n');
+		my_eputs(info->argv[1]), my_eputchar('\n');
 	}
 	else
 	{

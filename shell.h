@@ -128,8 +128,8 @@ char *find_path(info_t *, char *, char *);
 int loophsh(char **);
 
 /* toem_errors.c */
-void my_puts(char *);
-int my_putchar(char);
+void my_eputs(char *);
+int my_eputchar(char);
 int my_putfd(char c, int fd);
 int my_putsfd(char *str, int fd);
 
@@ -142,7 +142,7 @@ char *my_strcat(char *, char *);
 /* toem_string1.c */
 char *my_strcpy(char *, char *);
 char *my_strdup(const char *);
-void my_puts(char *);
+void _puts(char *);
 int my_putchar(char);
 
 /* toem_exits.c */
@@ -197,14 +197,14 @@ void free_info(info_t *, int);
 /* toem_environ.c */
 char *my_getenv(info_t *, const char *);
 int my_env(info_t *);
-int _setenv(info_t *);
+int my_setenv(info_t *);
 int my_unsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* toem_getenv.c */
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
-int my_setenv(info_t *, char *, char *);
+int _setenv(info_t *, char *, char *);
 
 /* toem_history.c */
 char *get_history_file(info_t *info);

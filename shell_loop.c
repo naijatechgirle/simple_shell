@@ -16,7 +16,7 @@ int hsh(info_t *info, char **av)
 	{
 		clear_info(info);
 		if (interactive(info))
-			my_puts("$ ");
+			my_eputs("$ ");
 		my_putchar(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
@@ -27,7 +27,7 @@ int hsh(info_t *info, char **av)
 				find_cmd(info);
 		}
 		else if (interactive(info))
-			_putchar('\n');
+			my_putchar('\n');
 		free_info(info, 0);
 	}
 	write_history(info);

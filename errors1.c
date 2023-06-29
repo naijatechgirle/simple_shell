@@ -37,13 +37,13 @@ int my_erratoi(char *s)
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	my_eputs(info->fname);
+	my_eputs(": ");
 	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	my_eputs(": ");
+	my_eputs(info->argv[0]);
+	my_eputs(": ");
+	my_eputs(estr);
 }
 
 /**
@@ -55,16 +55,16 @@ void print_error(info_t *info, char *estr)
  */
 int print_d(int input, int fd)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*_my_putchar)(char) = my_putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		_my_putchar = my_putchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
-		__putchar('-');
+		_my_putchar('-');
 		count++;
 	}
 	else
@@ -74,12 +74,12 @@ int print_d(int input, int fd)
 	{
 		if (_abs_ / i)
 		{
-			__putchar('0' + current / i);
+			_my_putchar('0' + current / i);
 			count++;
 		}
 		current %= i;
 	}
-	__putchar('0' + current);
+	_my_putchar('0' + current);
 	count++;
 
 	return (count);

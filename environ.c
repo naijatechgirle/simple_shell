@@ -45,7 +45,7 @@ int my_setenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		my_puts("Incorrect number of arguements\n");
+		my_eputs("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
@@ -65,11 +65,11 @@ int my_unsetenv(info_t *info)
 
 	if (info->argc == 1)
 	{
-		my_puts("Too few arguements.\n");
+		my_eputs("Too few arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)
-		my_unsetenv(info, info->argv[i]);
+		_unsetenv(info, info->argv[i]);
 
 	return (0);
 }
