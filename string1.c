@@ -45,12 +45,12 @@ char *my_strdup(const char *str)
 }
 
 /**
- * my_puts - prints an input string
+ * _puts - prints an input string
  * @str: the string to be printed
  *
  * Return: Nothing
  */
-void my_puts(char *str)
+void _puts(char *str)
 {
 	int i = 0;
 

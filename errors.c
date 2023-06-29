@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * my_puts - prints an input string
+ * my_eputs - prints an input string
  * @str: the string to be printed
  *
  * Return: Nothing
  */
-void my_puts(char *str)
+void my_eputs(char *str)
 {
 	int i = 0;
 
@@ -14,19 +14,19 @@ void my_puts(char *str)
 		return;
 	while (str[i] != '\0')
 	{
-		my_putchar(str[i]);
+		my_eputchar(str[i]);
 		i++;
 	}
 }
 
 /**
- * my_putchar - writes the character c to stderr
+ * my_eputchar - writes the character c to stderr
  * @c: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int my_putchar(char c)
+int my_eputchar(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
