@@ -2,8 +2,7 @@
 
 /**
 * my_exit - exits the shell
-* @info: Structure containing potential arguments. Used to maintain
-*         constant function prototype.
+* @info: Structure containing potential arguments.
 * Return: exits with a given exit status
 *         (0) if info.argv[0] != "exit"
 */
@@ -48,9 +47,7 @@ int my_cd(info_t *info)
 		if (!dir)
 			chdir_ret = chdir((dir = my_getenv(info, "PWD=")) ? dir : "/");
 		else
-		{
 			chdir_ret = chdir(dir);
-		}
 	}
 	else if (my_strcmp(info->argv[1], "-") == 0)
 	{
@@ -82,7 +79,6 @@ int my_cd(info_t *info)
 /**
  * my_help - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
  * Return: Always 0
  */
 int my_help(info_t *info)
